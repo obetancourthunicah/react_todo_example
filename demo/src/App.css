@@ -4,7 +4,7 @@ body{
 .App {
   font-size: 16px;
   font-size:1em;
-  background-color: #CCC;
+  background-color: #EEE;
   color:#222;
   padding:0px;
   margin:0px;
@@ -45,6 +45,14 @@ button{
   border-radius: 50%;
 }
 
+.toogleBtn a{
+  display: block;
+  box-sizing: border-box;
+  width:100%;
+  padding:1em 1.5em 0.5em 1.5em;
+  text-align: center;
+}
+
 ul{
   list-style: none;
   padding:0px;
@@ -52,6 +60,21 @@ ul{
 }
 ul li{
   padding:1em 1em 0.5em 1em;
-  box-shadow: 0 1px 1px #000;
+  box-shadow: 0 1px 1px #777;
+
+}
+
+.loading{
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top:0px;
+  bottom: 0px;
+  width:100%;
+  background-color: rgba(0,0,0,0.5);
+  color:white;
+  font-size: 3em;
+  z-index: 9999;
 
 }

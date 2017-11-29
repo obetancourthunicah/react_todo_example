@@ -17,17 +17,16 @@ function getData(handler){
           case error.PERMISSION_DENIED:
               hasGeoDataEnabled = false;
               return handler(null);
-            break;
           case error.POSITION_UNAVAILABLE:
                return handler(null);
-            break;
           case error.TIMEOUT:
                 return handler(null);
-            break;
           case error.UNKNOWN_ERROR:
               hasGeoDataEnabled=false;
               return handler(null);
-              break;
+          default:
+              hasGeoDataEnabled=false;
+              return handler(null)
         }
       }
     );

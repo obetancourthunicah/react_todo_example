@@ -13,23 +13,27 @@ export default class AddTodoItem extends Component {
     let isNumber = /^[A-Za-z\s]*$/;
     if(isNumber.test(input.target.value)){
 
-        this.setState({newTodo:input.target.value.toLowerCase()});
+        this.setState({newTodo:input.target.value});
     }
   }
   onbuttonClick(e){
     //let newTodo = this._todo.value;
     //this.props.addHandler(newTodo);
-    this.props.addHandler(this.state.newTodo);
+    if(!(/^\s*$/.test(this.state.newTodo))){
+      this.props.addHandler(this.state.newTodo);
+      this.setState({newTodo:""});
+    }
   }
   render() {
     return (
-      <div>
+      <div style={{position:"relative"}}>
         <input type="text"
                 placeholder="New TODO ITEM"
                 onChange={this.onChanged}
                 value={this.state.newTodo}
+                style={{width:"100%","paddingRight":"80px"}}
         />
-        <button onClick={this.onbuttonClick}>+</button>
+        <button style={{position:"absolute","right":"16px"}} onClick={this.onbuttonClick}>+</button>
       </div>
     );
     /* // Formato No Controlado

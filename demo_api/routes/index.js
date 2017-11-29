@@ -67,6 +67,27 @@ function routerInit(db){
 
   }) // end todos
 
+  router.get('/geotodos/:long/:lati', function(req,res,next){
+
+      todoCollection.find({geodata:{
+                                "$near":{
+                                            "$geometry":
+                                                  {"type":"Point",
+                                                  "coordinates":[parseFloat(req.params.long), parseFloat(req.params.lati)]
+                                                },
+                                              "$maxDistance":10000
+                                              }
+                                            }
+                                 }).toArray(function(err, todos){
+        if(err){
+          console.log(err);
+          return res.status(200).json([]);
+        }
+        return res.status(200).json(todos);
+      }) // find
+
+  }) // end todos
+
   return router;
 }// end routerInit
 
